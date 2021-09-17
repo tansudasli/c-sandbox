@@ -3,7 +3,7 @@
 #include <pthread.h>
 #include <semaphore.h>
 
-#define BUFFER_SIZE 1
+#define BINARY 1        //binary semaphore works as mutex
 
 sem_t *s;
 
@@ -18,8 +18,7 @@ void *f (void *arg) {
 //gcc -o out/semaphore src/semaphore.c  && out/semaphore
 int main(int argc, char **argv) {
 
-    s = sem_open("/dummy", O_CREAT, 0644, BUFFER_SIZE);
-
+    s = sem_open("/dummy", O_CREAT, 0644, BINARY);
     if (s == SEM_FAILED) {
         perror("semaphore creation error\n");
         exit(-1);

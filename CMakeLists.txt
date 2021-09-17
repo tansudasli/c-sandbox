@@ -107,4 +107,4 @@ add_executable(fibonacci src/dynamic-programming/fibonacci.c)
 add_executable(gridTraveller src/dynamic-programming/gridTraveller.c)
 
 add_executable(semaphore
-        src/semaphore.c)
+        src/threading/semaphore.c)
