@@ -3,12 +3,11 @@
 #include <pthread.h>
 #include <semaphore.h>
 
-#define BUFFER_SIZE 10
+#define BUFFER_SIZE 1
 
 sem_t *s;
-unsigned int X = 0;   //initial semaphore value
 
-void * f (void *arg) {
+void *f (void *arg) {
 
     printf("child started...\n");
     sem_post(s);        //signal that child is done!
@@ -19,7 +18,7 @@ void * f (void *arg) {
 //gcc -o out/semaphore src/semaphore.c  && out/semaphore
 int main(int argc, char **argv) {
 
-    s = sem_open("/dummy", O_CREAT, 0644, 0);
+    s = sem_open("/dummy", O_CREAT, 0644, BUFFER_SIZE);
 
     if (s == SEM_FAILED) {
         perror("semaphore creation error\n");
