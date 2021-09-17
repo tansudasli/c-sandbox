@@ -10,7 +10,6 @@
 - `brew install gcc` or `xcode-select --install` for compiler
 - `brew install cmake` to compile w/ cmake
 - then,
-    - `cd ansi-c`,
     - `./compile.sh`, and
     - First `cd out/`,
       then Run as `./getInput` or other variations
