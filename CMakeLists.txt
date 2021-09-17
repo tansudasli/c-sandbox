@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.17)
-project(ansi_c)
+project(c)
 
 set(CMAKE_CXX_STANDARD 14)
 
@@ -101,3 +101,7 @@ add_executable(structsHasPointers
 
 add_executable(memory
         src/memory.c)
+
+#dynamic
+add_executable(fibonacci src/dynamic-programming/fibonacci.c)
+add_executable(gridTraveller src/dynamic-programming/gridTraveller.c)
