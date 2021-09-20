@@ -14,11 +14,13 @@ void *f (void *arg) {
     //critical code
     sem_post(mutex);        //signal that child is done!
 
+    printf("child end...\n");
+
     return NULL;
 }
 
 //gcc -o out/semaphore src/semaphore.c  && out/semaphore
-//parent works only child ends
+//parent works, only after child ends
 int main(int argc, char **argv) {
 
     mutex = sem_open("/dummy", O_CREAT, 0644, BINARY);
@@ -31,7 +33,7 @@ int main(int argc, char **argv) {
 
     pthread_t c;
     pthread_create(&c, NULL, f, NULL);
-    sem_wait(mutex);         //wait here for the child
+    sem_wait(mutex);         //wait here for the child... blocking
 
     //do some parent staff
     printf("parent end...\n");
