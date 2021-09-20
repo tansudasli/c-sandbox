@@ -106,5 +106,9 @@ add_executable(memory
 add_executable(fibonacci src/dynamic-programming/fibonacci.c)
 add_executable(gridTraveller src/dynamic-programming/gridTraveller.c)
 
+#threading
 add_executable(semaphore
         src/threading/semaphore.c)
+
+add_executable(forking
+        src/threading/forking.c)
