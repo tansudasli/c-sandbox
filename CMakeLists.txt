@@ -112,3 +112,6 @@ add_executable(semaphore
 
 add_executable(forking
         src/threading/forking.c)
+
+add_executable(forkingExec
+        src/threading/forkingExec.c)
