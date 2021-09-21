@@ -3,6 +3,7 @@
 #include <unistd.h>
 #include <string.h>
 #include <sys/wait.h>
+#include <assert.h>
 
 //process
 //  cmake --build cmake-build-debug --target forking -- -j 1
@@ -36,8 +37,8 @@ int main(int argc, char **argv) {
     }
     else {
         //parent process
-        wait(NULL);  //this line is the 1st. either child or parent run first,
-                     // we are sure, the child will be the first.
+        int wc = wait(NULL);  //this line is the 1st. either child or parent run first, so we are sure, the child will be the first.
+        assert(wc >= 0);
 
         printf("in parent: rc (child pid)=%d  pid=%d\n", rc, (int) getpid());
 
