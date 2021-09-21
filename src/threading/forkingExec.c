@@ -31,6 +31,8 @@ int main(int argc, char **argv) {
 
         execvp("wc", x);
 
+        printf("\n====should not be printed !!=====\n");
+
     }
     else {
         //parent process
