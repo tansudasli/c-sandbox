@@ -102,6 +102,9 @@ add_executable(structsHasPointers
 add_executable(memory
         src/memory.c)
 
+add_executable(memory2
+        src/memory2.c)
+
 #dynamic
 add_executable(fibonacci src/dynamic-programming/fibonacci.c)
 add_executable(gridTraveller src/dynamic-programming/gridTraveller.c)
