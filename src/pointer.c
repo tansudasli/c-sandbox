@@ -9,7 +9,7 @@ int main(int argc, char **argv) {
      *      int x   - variable is x, and holds value
      *      int *y  - variable is y, not *y, and holds an address!!
      *          when we indirect(*y = means value at address), it is not the same operator as in int* !!
-     *          & is the address operator of variable
+     *          & is the address operator of any variable
      *          so &x is addr of x. but &y is also an address. but y is an address of something else!!
      */
 
@@ -32,7 +32,7 @@ int main(int argc, char **argv) {
     char ch = 'H';
     char* chPtr = &ch;
     char* k = "abc"; //valid, it is a string in fact, or array of chars
-    //char *z = 'm';  //invalid, cause char* waits an sequence (array) of something
+    //char *z = 'm';  //invalid, cause char* waits a sequence (array) of something
 
     printf("%p        %c                 n/a      char/char*\n", &ch, ch);
     printf("%p        %p     %c\n", &chPtr, chPtr, *chPtr);
@@ -48,17 +48,17 @@ int main(int argc, char **argv) {
      * In char[], you have chance to use %c and %s . In int[], you can only use %d, So
      * There is one diff. while accessing to value. %s waits char*, while %c waits char.
      *
-     * Array is pointer and has value, But pointer has addr, not value. Value' addr is somewhere in memory.
+     * Array is pointer and has value, But pointer has address, not value..
      */
 
     //array
     int kkk = 5;
     int m[] = {1,2,3,4,5};
-    int* mPtr = m;    //m is same as &m. cause it is array!!!. And points to addr of m[0]
+    int* mPtr = m;    //m is same as &m. because it is an array!!!. And points to address of m[0]
     //mPtr = &kkk;      //valid
 
-    //int *z = {1,2,3,4,5}; //not valid,
-    //int *ho = 12345; //not valid and not meaningful as char*="abc" !!!
+    //int *z = {1,2,3,4,5}; //not valid, you should initialize w/ either [] or calloc, then initialize it using index or pointer arithmetic
+    //int *ho = 12345; //not valid and not meaningful as char* ho="abc" !!!
 
 
 //    printf("%d %d %p == %p == %p\n", m[0], *m, &m, m, &m[0]);       //array is the address of itself
@@ -68,9 +68,9 @@ int main(int argc, char **argv) {
     printf("\n");
     //
     char msg[] = "Hello";
-    char *msg2 = "Mello";
+    char *msg2 = "Zello";
 
-    //msg++;  //invalid. but it was a pointer
+    //msg++;  //invalid. but it was a pointer. msg+1 is OK :)  true for int[] also !!!
     msg2++;   //valid
     printf("%c %c %s %p == %p       char*/char[]\n", *(msg+1), msg[0], msg, &msg, msg);    //array is the address of itself
     printf("%c %s %p != %p\n", *msg2, msg2, &msg2, msg2); //but, Mello's addr. is different from msg2's addr
