@@ -100,10 +100,10 @@ add_executable(structsHasPointers
         src/structsHasPointers.c)
 
 add_executable(memory
-        src/memory.c)
+        src/memory2.c)
 
 add_executable(memory2
-        src/memory2.c)
+        src/memory.c)
 
 #dynamic
 add_executable(fibonacci src/dynamic-programming/fibonacci.c)
