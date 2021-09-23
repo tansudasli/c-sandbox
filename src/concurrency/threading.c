@@ -31,7 +31,6 @@ void *xyz(void *arg) {
  */
 int main (int argc, char **argv) {
     pthread_t t1, t2;
-    int rc;
 
     printf("parent start...\n");
 
