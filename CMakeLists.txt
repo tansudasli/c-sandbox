@@ -109,15 +109,15 @@ add_executable(memory2
 add_executable(fibonacci src/dynamic-programming/fibonacci.c)
 add_executable(gridTraveller src/dynamic-programming/gridTraveller.c)
 
-#threading
+#concurrency
 add_executable(semaphore
-        src/threading/semaphore.c)
+        src/concurrency/semaphore.c)
 
 add_executable(forking
-        src/threading/forking.c)
+        src/concurrency/forking.c)
 
 add_executable(forkingExec
-        src/threading/forkingExec.c)
+        src/concurrency/forkingExec.c)
 
 add_executable(threading
-        src/threading/threading.c)
+        src/concurrency/threading.c)
