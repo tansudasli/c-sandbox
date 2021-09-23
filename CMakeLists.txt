@@ -118,3 +118,6 @@ add_executable(forking
 
 add_executable(forkingExec
         src/threading/forkingExec.c)
+
+add_executable(threading
+        src/threading/threading.c)
