@@ -121,3 +121,6 @@ add_executable(forkingExec
 
 add_executable(threading
         src/concurrency/threading.c)
+
+add_executable(threadingSharedData
+        src/concurrency/threadingSharedData.c)
