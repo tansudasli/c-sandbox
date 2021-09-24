@@ -4,8 +4,15 @@
 #include <pthread.h>
 #include "common_threads.h"
 
+//global var to hold some arguments, or
+//create at heap. every thread has own stack !!!
+typedef
+struct args {
+    int max;
 
+} ARGS;
 
+static ARGS args;
 static volatile int counter = 0;
 
 /**
@@ -18,7 +25,7 @@ void *xyz(void *arg) {
     printf("thread begin=%s \t%d\n", (char *)arg, counter);
 
     //critical part. many switches and many threading issues
-    for (int i = 0; i <= 1e6; i++)
+    for (int i = 0; i <= args.max; i++)
         counter++;
 
     printf("thread end=%s \t%d\n", (char *)arg, counter);
@@ -46,6 +53,10 @@ void *xyz(void *arg) {
  */
 int main (int argc, char **argv) {
     pthread_t t1, t2;
+
+    //global static var
+    args.max = argc > 0 ? atoi(argv[1]) : 1e7;
+    printf("max=%d\n", args.max);
 
     printf("main start counter=%d...\n", counter);
 
