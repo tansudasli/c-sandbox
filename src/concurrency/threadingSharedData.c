@@ -4,9 +4,10 @@
 #include <pthread.h>
 #include "common_threads.h"
 
-//global var to hold some arguments, or
-//create at heap. every thread has own stack, or
-// use shared memory!!!
+//every thread has its own stack, so to hold some arguments to share among threads
+//1- global var (not has to be static !!), or
+//2- create var at heap (calloc etc..),  or
+//3- use shared memory!!!
 typedef
 struct args {
     int max;
@@ -57,7 +58,7 @@ int main (int argc, char **argv) {
     pthread_t t1, t2;
 
     //global static var
-    args.max = argc > 0 ? atoi(argv[1]) : 1e7;
+    args.max = argc == 2 ? atoi(argv[1]) : 1e7;
     printf("max=%d\n", args.max);
 
     printf("main start counter=%d...\n", counter);
