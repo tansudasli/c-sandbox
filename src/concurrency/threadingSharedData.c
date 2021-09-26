@@ -5,7 +5,8 @@
 #include "common_threads.h"
 
 //global var to hold some arguments, or
-//create at heap. every thread has own stack !!!
+//create at heap. every thread has own stack, or
+// use shared memory!!!
 typedef
 struct args {
     int max;
@@ -14,6 +15,7 @@ struct args {
 
 static ARGS args;
 static volatile int counter = 0;
+
 
 /**
  * Accessing global static data.
@@ -67,7 +69,7 @@ int main (int argc, char **argv) {
     Pthread_join(t1, NULL);
     Pthread_join(t2, NULL);
 
-    printf("main end counter=%d...\n", counter);
+    printf("main end global counter=%d...\n", counter);
 
     return EXIT_SUCCESS;
 }
