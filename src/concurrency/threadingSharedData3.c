@@ -31,12 +31,10 @@ void *xyz(void *arg) {
 
     //critical part. many switches and many threading issues
 
-    int rc = pthread_mutex_lock(&lock);      //blocks other threads
-    assert(rc == 0);   //check lock is OK
+    Pthread_mutex_lock(&lock);
     for (int i = 0; i < args.max; i++)
         counter++;
-    rc = pthread_mutex_unlock(&lock);
-    assert(rc == 0);
+    Pthread_mutex_unlock(&lock);
 
     printf("thread end=%s \t%d\n", (char *)arg, counter);
     return NULL;
@@ -69,8 +67,7 @@ int main (int argc, char **argv) {
     printf("max=%d\n", args.max);
 
     //init lock
-    int rc = pthread_mutex_init(&lock, NULL);
-    assert(rc == 0);
+    Mutex_init(&lock);
 
     printf("main start counter=%d...\n", counter);
 
