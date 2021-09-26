@@ -29,11 +29,10 @@ pthread_mutex_t lock; //= PTHREAD_MUTEX_INITIALIZER;  //init lock
 void *xyz(void *arg) {
     printf("thread begin=%s \t%d\n", (char *)arg, counter);
 
-    //critical part. many switches and many threading issues
-
+    //lock
     Pthread_mutex_lock(&lock);
     for (int i = 0; i < args.max; i++)
-        counter++;
+        counter++;                        //critical part
     Pthread_mutex_unlock(&lock);
 
     printf("thread end=%s \t%d\n", (char *)arg, counter);
