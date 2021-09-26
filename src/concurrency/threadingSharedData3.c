@@ -17,8 +17,8 @@ struct args {
 static ARGS args;
 static volatile int counter = 0;
 
-pthread_mutex_t lock = PTHREAD_MUTEX_INITIALIZER;  //init lock
-                    //or, dynamically --> int rc = pthread_mutex_init(&lock, NULL); assert(rc == 0);
+pthread_mutex_t lock; //= PTHREAD_MUTEX_INITIALIZER;  //init lock
+//or, dynamically --> int rc = pthread_mutex_init(&lock, NULL); assert(rc == 0);
 
 /**
  * Accessing global static data.
@@ -30,10 +30,12 @@ void *xyz(void *arg) {
     printf("thread begin=%s \t%d\n", (char *)arg, counter);
 
     //critical part. many switches and many threading issues
+
     pthread_mutex_lock(&lock);      //blocks other threads
     for (int i = 0; i < args.max; i++)
         counter++;
     pthread_mutex_unlock(&lock);
+
 
     printf("thread end=%s \t%d\n", (char *)arg, counter);
     return NULL;
@@ -65,6 +67,10 @@ int main (int argc, char **argv) {
     args.max = argc == 2 ? atoi(argv[1]) : 1e7;
     printf("max=%d\n", args.max);
 
+    //init lock
+    int rc = pthread_mutex_init(&lock, NULL);
+    assert(rc == 0);
+
     printf("main start counter=%d...\n", counter);
 
     Pthread_create(&t1, NULL, xyz, "t1");
@@ -74,7 +80,12 @@ int main (int argc, char **argv) {
     Pthread_join(t1, NULL);
     Pthread_join(t2, NULL);
 
-    printf("main end global counter=%d \t expected=%d...\n", counter, args.max * 2);
+    printf("main end counter=%d...\n", counter);
+
+    assert(counter == args.max * 2);
+
+    //destroy lock
+    pthread_mutex_destroy(&lock);
 
     return EXIT_SUCCESS;
 }
