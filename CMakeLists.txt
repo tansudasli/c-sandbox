@@ -127,3 +127,6 @@ add_executable(threadingSharedData
 
 add_executable(threadingSharedData2
         src/concurrency/threadingSharedData2.c)
+
+add_executable(threadingSharedData3
+        src/concurrency/threadingSharedData3.c)
