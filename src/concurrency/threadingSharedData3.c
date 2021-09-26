@@ -31,11 +31,12 @@ void *xyz(void *arg) {
 
     //critical part. many switches and many threading issues
 
-    pthread_mutex_lock(&lock);      //blocks other threads
+    int rc = pthread_mutex_lock(&lock);      //blocks other threads
+    assert(rc == 0);   //check lock is OK
     for (int i = 0; i < args.max; i++)
         counter++;
-    pthread_mutex_unlock(&lock);
-
+    rc = pthread_mutex_unlock(&lock);
+    assert(rc == 0);
 
     printf("thread end=%s \t%d\n", (char *)arg, counter);
     return NULL;
