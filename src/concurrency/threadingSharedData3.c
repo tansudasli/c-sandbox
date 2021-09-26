@@ -17,7 +17,8 @@ struct args {
 static ARGS args;
 static volatile int counter = 0;
 
-pthread_mutex_t lock = PTHREAD_MUTEX_INITIALIZER;
+pthread_mutex_t lock = PTHREAD_MUTEX_INITIALIZER;  //init lock
+                    //or, dynamically --> int rc = pthread_mutex_init(&lock, NULL); assert(rc == 0);
 
 /**
  * Accessing global static data.
@@ -29,8 +30,7 @@ void *xyz(void *arg) {
     printf("thread begin=%s \t%d\n", (char *)arg, counter);
 
     //critical part. many switches and many threading issues
-
-    pthread_mutex_lock(&lock);
+    pthread_mutex_lock(&lock);      //blocks other threads
     for (int i = 0; i < args.max; i++)
         counter++;
     pthread_mutex_unlock(&lock);
