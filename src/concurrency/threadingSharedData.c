@@ -28,7 +28,7 @@ void *xyz(void *arg) {
     printf("thread begin=%s \t%d\n", (char *)arg, counter);
 
     //critical part. many switches and many threading issues
-    for (int i = 0; i <= args.max; i++)
+    for (int i = 0; i < args.max; i++)
         counter++;
 
     printf("thread end=%s \t%d\n", (char *)arg, counter);
