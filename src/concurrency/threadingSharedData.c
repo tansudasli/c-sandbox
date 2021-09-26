@@ -70,7 +70,7 @@ int main (int argc, char **argv) {
     Pthread_join(t1, NULL);
     Pthread_join(t2, NULL);
 
-    printf("main end global counter=%d...\n", counter);
+    printf("main end global counter=%d \t expected=%d...\n", counter, args.max * 2);
 
     return EXIT_SUCCESS;
 }
