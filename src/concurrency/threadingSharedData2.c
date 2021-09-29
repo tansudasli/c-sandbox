@@ -11,14 +11,14 @@ struct ret {
 
 
 void *xyz(void *arg) {
-    RETURN_T *return_t = (RETURN_T *) calloc(1, sizeof(RETURN_T));
+    RETURN_T *r = (RETURN_T *) calloc(1, sizeof(RETURN_T));
 
     //do some staffs
 
     //adjust values for waiting
-    return_t->x = 1;
+    r->x = 1;
 
-    return (void *)return_t;
+    return (void *)r;
 }
 
 int main (int argc, char **argv) {
