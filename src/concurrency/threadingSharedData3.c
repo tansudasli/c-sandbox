@@ -18,7 +18,7 @@ static ARGS args;
 static volatile int counter = 0;
 
 pthread_mutex_t lock; //= PTHREAD_MUTEX_INITIALIZER;  //init lock
-//or, dynamically --> int rc = pthread_mutex_init(&lock, NULL); assert(rc == 0);
+                      //or, dynamically --> int rc = pthread_mutex_init(&lock, NULL); assert(rc == 0);
 
 /**
  * Accessing global static data.
