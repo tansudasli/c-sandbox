@@ -58,6 +58,7 @@ dkms.conf
 out
 .metadata
 Debug
+build
 
 cmake-build-debug
 
